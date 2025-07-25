@@ -1,0 +1,12 @@
+<input type="text" id="city" placeholder="Enter city">
+<button onclick="getWeather()">Check</button>
+<p id="result"></p>
+
+<script>
+async function getWeather() {
+  const city = document.getElementById("city").value;
+  const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=YOUR_KEY`);
+  const data = await res.json();
+  document.getElementById("result").innerText = `Temp: ${data.main.temp}`;
+}
+</script>

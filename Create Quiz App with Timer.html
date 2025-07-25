@@ -1,0 +1,13 @@
+<h2>What is the capital of France?</h2>
+<input type="radio" name="q1" value="Paris"> Paris<br>
+<input type="radio" name="q1" value="London"> London<br>
+<p id="timer">Time left: 30</p>
+
+<script>
+  let time = 30;
+  setInterval(() => {
+    if (time > 0) {
+      document.getElementById("timer").innerText = "Time left: " + --time;
+    }
+  }, 1000);
+</script>

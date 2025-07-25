@@ -1,0 +1,12 @@
+<input id="task" placeholder="New task">
+<button onclick="addTask()">Add</button>
+<ul id="list"></ul>
+
+<script>
+function addTask() {
+  let item = document.createElement("li");
+  item.textContent = document.getElementById("task").value;
+  item.onclick = () => item.remove();
+  document.getElementById("list").appendChild(item);
+}
+</script>

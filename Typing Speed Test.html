@@ -1,0 +1,15 @@
+<textarea id="input" placeholder="Start typing..."></textarea>
+<button onclick="checkSpeed()">Done</button>
+<p id="speed"></p>
+
+<script>
+let start = new Date();
+function checkSpeed() {
+  let text = document.getElementById("input").value.trim();
+  let end = new Date();
+  let time = (end - start) / 1000; // seconds
+  let words = text.split(" ").length;
+  let wpm = Math.round((words / time) * 60);
+  document.getElementById("speed").innerText = `Speed: ${wpm} WPM`;
+}
+</script>

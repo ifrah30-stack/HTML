@@ -1,0 +1,10 @@
+<button onclick="playDrum('kick')">Kick</button>
+<button onclick="playDrum('snare')">Snare</button>
+<audio id="kick" src="kick.wav"></audio>
+<audio id="snare" src="snare.wav"></audio>
+
+<script>
+function playDrum(id) {
+  document.getElementById(id).play();
+}
+</script>

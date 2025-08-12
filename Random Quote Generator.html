@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Random Quote Generator</title>
+<style>
+body { font-family: Arial; text-align: center; padding: 50px; background: #f4f4f4; }
+button { padding: 10px 20px; font-size: 16px; }
+#quote { font-size: 20px; margin-top: 20px; }
+</style>
+</head>
+<body>
+<h2>Random Quote Generator</h2>
+<button onclick="newQuote()">Get Quote</button>
+<p id="quote"></p>
+<script>
+const quotes = [
+    "The best way to get started is to quit talking and begin doing.",
+    "Don't let yesterday take up too much of today.",
+    "It's not whether you get knocked down, it's whether you get up.",
+    "Success is not in what you have, but who you are."
+];
+function newQuote() {
+    document.getElementById("quote").innerText =
+        quotes[Math.floor(Math.random() * quotes.length)];
+}
+</script>
+</body>
+</html>

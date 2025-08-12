@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Image Carousel</title>
+<style>
+body {
+    background: #000;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+.carousel {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    transform-style: preserve-3d;
+    animation: rotate 20s infinite linear;
+}
+.carousel img {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+}
+@keyframes rotate {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+}
+</style>
+</head>
+<body>
+<div class="carousel">
+    <img src="https://picsum.photos/id/1015/300/300" style="transform: rotateY(0deg) translateZ(500px);">
+    <img src="https://picsum.photos/id/1025/300/300" style="transform: rotateY(60deg) translateZ(500px);">
+    <img src="https://picsum.photos/id/1035/300/300" style="transform: rotateY(120deg) translateZ(500px);">
+    <img src="https://picsum.photos/id/1045/300/300" style="transform: rotateY(180deg) translateZ(500px);">
+    <img src="https://picsum.photos/id/1055/300/300" style="transform: rotateY(240deg) translateZ(500px);">
+    <img src="https://picsum.photos/id/1065/300/300" style="transform: rotateY(300deg) translateZ(500px);">
+</div>
+</body>
+</html>

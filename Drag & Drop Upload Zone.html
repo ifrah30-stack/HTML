@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drag & Drop Upload</title>
+    <style>
+        #drop-zone {
+            border: 2px dashed #ccc;
+            padding: 50px;
+            text-align: center;
+        }
+        #drop-zone.highlight {
+            border-color: purple;
+            background: #f0f0ff;
+        }
+    </style>
+</head>
+<body>
+    <div id="drop-zone">Drop files here</div>
+    <script>
+        const dropZone = document.getElementById('drop-zone');
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('highlight');
+        });
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('highlight');
+            alert(`Dropped ${e.dataTransfer.files.length} file(s)`);
+        });
+    </script>
+</body>
+</html>

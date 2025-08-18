@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Typing Effect</title>
+    <style>
+        #typing-text {
+            font-size: 2em;
+            font-family: monospace;
+            border-right: 3px solid;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="typing-text"></div>
+    <script>
+        const phrases = ["Hello!", "Welcome!", "Goodbye!"];
+        let i = 0, j = 0, isDeleting = false;
+        function type() {
+            const text = phrases[i];
+            const elem = document.getElementById('typing-text');
+            if (isDeleting) {
+                elem.textContent = text.substring(0, j--);
+                if (j === 0) {
+                    isDeleting = false;
+                    i = (i + 1) % phrases.length;
+                }
+            } else {
+                elem.textContent = text.substring(0, j++);
+                if (j === text.length) {
+                    isDeleting = true;
+                }
+            }
+            setTimeout(type, isDeleting ? 50 : 150);
+        }
+        type();
+    </script>
+</body>
+</html>

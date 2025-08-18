@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hamburger Menu</title>
+    <style>
+        .menu-btn {
+            width: 30px;
+            height: 20px;
+            position: relative;
+            cursor: pointer;
+        }
+        .menu-btn span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: black;
+            position: absolute;
+            transition: 0.3s;
+        }
+        .menu-btn span:nth-child(1) { top: 0; }
+        .menu-btn span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+        .menu-btn span:nth-child(3) { bottom: 0; }
+        .menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-btn.active span:nth-child(2) { opacity: 0; }
+        .menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    </style>
+</head>
+<body>
+    <div class="menu-btn" onclick="this.classList.toggle('active')">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</body>
+</html>

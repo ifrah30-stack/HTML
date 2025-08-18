@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Typewriter Effect</title>
+    <style>
+        #typewriter {
+            font-family: monospace;
+            font-size: 2em;
+            border-right: 3px solid;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: blink 0.75s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: black; }
+        }
+    </style>
+</head>
+<body>
+    <div id="typewriter"></div>
+    <script>
+        const text = "Hello, this is a typewriter effect!";
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                document.getElementById('typewriter').textContent += text.charAt(i);
+                i++;
+                setTimeout(type, 100);
+            }
+        }
+        type();
+    </script>
+</body>
+</html>

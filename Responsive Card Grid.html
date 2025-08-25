@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Responsive Grid Cards</title>
+<style>
+  *{box-sizing:border-box} body{margin:0;font:16px/1.5 system-ui,sans-serif;background:#f8fafc;color:#0f172a}
+  header{padding:2rem;text-align:center}
+  .grid{display:grid;gap:1rem;padding:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:1rem;box-shadow:0 6px 18px rgba(2,6,23,.06)}
+  .card h3{margin:.5rem 0}
+  .card p{margin:0;color:#475569}
+  .btn{display:inline-block;margin-top:.5rem;padding:.5rem .9rem;border-radius:999px;border:1px solid #cbd5e1;background:#0ea5e9;color:#fff}
+</style>
+</head>
+<body>
+  <header><h1>Feature Cards</h1></header>
+  <section class="grid">
+    <article class="card"><h3>Speed</h3><p>Fast loading pages.</p><a class="btn" href="#">Learn</a></article>
+    <article class="card"><h3>Security</h3><p>Strong defaults.</p><a class="btn" href="#">Learn</a></article>
+    <article class="card"><h3>Accessibility</h3><p>Inclusive design.</p><a class="btn" href="#">Learn</a></article>
+    <article class="card"><h3>SEO</h3><p>Semantic HTML.</p><a class="btn" href="#">Learn</a></article>
+  </section>
+</body>
+</html>

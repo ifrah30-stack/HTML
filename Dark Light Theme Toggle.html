@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Theme Toggle</title>
+<style>
+  :root{color-scheme:light dark}
+  body{margin:0;font-family:system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;transition:background .2s,color .2s}
+  .card{padding:1.25rem;border-radius:16px;border:1px solid;color:inherit}
+  .toggle{margin-top:1rem;padding:.6rem 1rem;border-radius:12px;border:1px solid currentColor;background:transparent;cursor:pointer}
+  .dark{background:#0b1020;color:#e5e7eb}
+  .light{background:#ffffff;color:#0f172a}
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>Theme Toggle</h2>
+    <p>This page remembers your preference.</p>
+    <button class="toggle" id="btn">Toggle Theme</button>
+  </div>
+<script>
+const key="theme-choice";
+const preferDark=matchMedia("(prefers-color-scheme: dark)").matches;
+function apply(theme){document.body.className=theme}
+apply(localStorage.getItem(key) || (preferDark?"dark":"light"));
+document.getElementById("btn").onclick=()=>{
+  const next=document.body.classList.contains("dark")?"light":"dark";
+  apply(next); localStorage.setItem(key,next);
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sortable Table</title>
+<style>
+  body{font-family:system-ui,sans-serif;margin:2rem;background:#fafafa}
+  table{border-collapse:collapse;width:min(800px,95vw);margin:auto;background:#fff;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden}
+  th,td{padding:.75rem 1rem;border-bottom:1px solid #e5e7eb}
+  tr:nth-child(even){background:#f8fafc}
+  th{cursor:pointer;user-select:none;text-align:left;position:sticky;top:0;background:#f1f5f9}
+</style>
+</head>
+<body>
+  <table id="t">
+    <thead>
+      <tr>
+        <th data-k="name">Name ▲▼</th>
+        <th data-k="age">Age ▲▼</th>
+        <th data-k="city">City ▲▼</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+<script>
+const data=[{name:"Aarav",age:22,city:"Delhi"},
+            {name:"Meera",age:25,city:"Pune"},
+            {name:"Zara",age:21,city:"Mumbai"},
+            {name:"Kabir",age:23,city:"Hyderabad"}];
+
+const tbody=document.querySelector("#t tbody");
+function render(rows){tbody.innerHTML=rows.map(r=>`<tr><td>${r.name}</td><td>${r.age}</td><td>${r.city}</td></tr>`).join("")}
+render(data);
+
+let asc=true;
+document.querySelectorAll("th").forEach(th=>{
+  th.addEventListener("click",()=>{
+    const k=th.dataset.k;
+    const sorted=[...data].sort((a,b)=>{
+      if(a[k]<b[k]) return asc?-1:1;
+      if(a[k]>b[k]) return asc?1:-1;
+      return 0;
+    });
+    asc=!asc; render(sorted);
+  });
+});
+</script>
+</body>
+</html>

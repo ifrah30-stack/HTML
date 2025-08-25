@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Digital Clock</title>
+<style>
+  body{margin:0;display:grid;place-items:center;min-height:100vh;background:#111827;color:#e5e7eb;font:700 64px/1 system-ui,monospace}
+  .clock{letter-spacing:.05em; padding:1rem 1.5rem;border:2px solid #374151;border-radius:18px;box-shadow:0 0 0 8px rgba(255,255,255,.02) inset}
+</style>
+</head>
+<body>
+  <div class="clock" id="c">--:--:--</div>
+<script>
+function pad(n){return n.toString().padStart(2,"0")}
+function tick(){
+  const d=new Date();
+  const t=`${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+  document.getElementById("c").textContent=t;
+}
+tick(); setInterval(tick,1000);
+</script>
+</body>
+</html>

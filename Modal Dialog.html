@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Modal Dialog</title>
+<style>
+  body{font-family:system-ui,sans-serif;margin:0;display:grid;place-items:center;min-height:100vh}
+  .btn{padding:.7rem 1rem;border:none;border-radius:12px;background:#7c3aed;color:#fff;cursor:pointer}
+  .backdrop{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center}
+  .dialog{background:#fff;width:min(520px,92vw);border-radius:16px;padding:1rem;box-shadow:0 18px 40px rgba(0,0,0,.25)}
+  .actions{display:flex;justify-content:flex-end;gap:.5rem;margin-top:1rem}
+</style>
+</head>
+<body>
+  <button class="btn" id="open">Open Modal</button>
+  <div class="backdrop" id="backdrop" role="dialog" aria-modal="true" aria-labelledby="title">
+    <div class="dialog">
+      <h2 id="title">Confirm Action</h2>
+      <p>Do you want to continue?</p>
+      <div class="actions">
+        <button id="cancel">Cancel</button>
+        <button id="ok">OK</button>
+      </div>
+    </div>
+  </div>
+<script>
+const openBtn=document.getElementById("open");
+const backdrop=document.getElementById("backdrop");
+const cancel=document.getElementById("cancel");
+const ok=document.getElementById("ok");
+function open(){backdrop.style.display="flex"; ok.focus();}
+function close(){backdrop.style.display="none"; openBtn.focus();}
+openBtn.onclick=open; cancel.onclick=close; ok.onclick=close;
+backdrop.addEventListener("click",e=>{if(e.target===backdrop) close()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape") close()});
+</script>
+</body>
+</html>

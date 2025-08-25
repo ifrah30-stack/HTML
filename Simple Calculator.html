@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Calculator</title>
+<style>
+  body{margin:0;display:grid;place-items:center;min-height:100vh;background:#0f172a;font-family:system-ui,sans-serif}
+  .calc{background:#111827;color:#e5e7eb;border-radius:20px;padding:1rem;box-shadow:0 12px 34px rgba(0,0,0,.35)}
+  .screen{height:60px;display:flex;align-items:center;justify-content:flex-end;border:1px solid #374151;border-radius:12px;padding:0 1rem;margin-bottom:.75rem;font-size:1.5rem;overflow:auto}
+  .grid{display:grid;grid-template-columns:repeat(4,64px);gap:.5rem}
+  button{height:64px;border:none;border-radius:14px;font-size:1.1rem;cursor:pointer;background:#1f2937;color:#fff}
+  button.op{background:#2563eb}
+  button.eq{background:#16a34a}
+  button.clear{background:#dc2626}
+</style>
+</head>
+<body>
+  <div class="calc">
+    <div class="screen" id="s">0</div>
+    <div class="grid">
+      <button class="clear">C</button><button>(</button><button>)</button><button class="op">/</button>
+      <button>7</button><button>8</button><button>9</button><button class="op">*</button>
+      <button>4</button><button>5</button><button>6</button><button class="op">-</button>
+      <button>1</button><button>2</button><button>3</button><button class="op">+</button>
+      <button>0</button><button>.</button><button class="eq">=</button><button>⌫</button>
+    </div>
+  </div>
+<script>
+const s=document.getElementById("s");
+let expr="0";
+function show(){s.textContent=expr}
+document.querySelectorAll("button").forEach(b=>b.onclick=()=>{
+  const t=b.textContent;
+  if(b.classList.contains("clear")){expr="0"}
+  else if(b.classList.contains("eq")){try{expr=String(Function(`"use strict";return(${expr})`)())}catch{expr="Error"}}
+  else if(t==="⌫"){expr=expr.length>1?expr.slice(0,-1):"0"}
+  else{expr=expr==="0"?t:expr+t}
+  show();
+});
+show();
+</script>
+</body>
+</html>

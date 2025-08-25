@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Todo (localStorage)</title>
+<style>
+  body{font-family:system-ui,sans-serif;background:#f8fafc;margin:0;display:grid;place-items:center;min-height:100vh}
+  .app{background:#fff;width:min(560px,94vw);border:1px solid #e2e8f0;border-radius:16px;padding:1rem;box-shadow:0 10px 28px rgba(2,6,23,.06)}
+  form{display:flex;gap:.5rem}
+  input{flex:1;padding:.7rem;border:1px solid #cbd5e1;border-radius:12px}
+  button{padding:.7rem 1rem;border:none;border-radius:12px;background:#0ea5e9;color:#fff;cursor:pointer}
+  ul{list-style:none;padding:0;margin:1rem 0}
+  li{display:flex;align-items:center;gap:.5rem;padding:.4rem .2rem}
+  li.done span{text-decoration:line-through;color:#64748b}
+</style>
+</head>
+<body>
+  <div class="app">
+    <h2>My Tasks</h2>
+    <form id="f"><input id="in" placeholder="Add a task…" required /><button>Add</button></form>
+    <ul id="list"></ul>
+  </div>
+<script>
+const key="todo-items-v1";
+const list=document.getElementById("list");
+const input=document.getElementById("in");
+const form=document.getElementById("f");
+let items=JSON.parse(localStorage.getItem(key)||"[]");
+function save(){localStorage.setItem(key,JSON.stringify(items))}
+function render(){
+  list.innerHTML="";
+  items.forEach((it,i)=>{
+    const li=document.createElement("li");
+    li.className=it.done?"done":"";
+    li.innerHTML=`<input type="checkbox" ${it.done?"checked":""}/>
+                  <span>${it.text}</span>
+                  <button aria-label="delete">🗑️</button>`;
+    li.querySelector("input").onchange=e=>{items[i].done=e.target.checked;save();render()};
+    li.querySelector("button").onclick=()=>{items.splice(i,1);save();render()};
+    list.appendChild(li);
+  });
+}
+form.onsubmit=e=>{e.preventDefault();items.push({text:input.value.trim(),done:false});input.value="";save();render()};
+render();
+</script>
+</body>
+</html>

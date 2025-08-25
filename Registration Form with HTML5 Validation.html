@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Registration Form</title>
+<style>
+  body{font-family:system-ui,sans-serif;margin:0;display:grid;place-items:center;min-height:100vh;background:#f1f5f9}
+  form{background:#fff;padding:1.25rem;border-radius:16px;border:1px solid #e2e8f0;box-shadow:0 10px 30px rgba(2,6,23,.06);width:min(520px,92vw)}
+  label{display:block;margin:.75rem 0 .25rem}
+  input,select,button{width:100%;padding:.7rem;border-radius:12px;border:1px solid #cbd5e1}
+  button{margin-top:1rem;background:#16a34a;color:#fff;border:none;cursor:pointer}
+  .hint{color:#64748b;font-size:.9rem}
+</style>
+</head>
+<body>
+  <form>
+    <h2>Sign up</h2>
+    <label for="name">Full Name</label>
+    <input id="name" name="name" required />
+
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required />
+
+    <label for="pass">Password</label>
+    <input id="pass" name="pass" type="password" minlength="6" required />
+    <p class="hint">At least 6 characters</p>
+
+    <label for="role">Role</label>
+    <select id="role" name="role" required>
+      <option value="">Choose…</option>
+      <option>Student</option>
+      <option>Developer</option>
+      <option>Designer</option>
+    </select>
+
+    <label><input type="checkbox" required /> I agree to terms</label>
+    <button type="submit">Create Account</button>
+  </form>
+</body>
+</html>
